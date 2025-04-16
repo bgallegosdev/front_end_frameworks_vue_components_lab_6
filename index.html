@@ -12,15 +12,38 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class=".container-fluid">
+    <header class="container-fluid p-3 bg-dark text-bg-dark">
         <h1>StageLeft Theatre Company</h1>
-        <h2>Theatre Auditions & Events!</h2>
+        <span>Creativity, Inspiration, and Action!</span>
     </header>
 
     <main>
-        <div id="introduction">
+        <!-- Slide Images - Structure Inspired by w3schools.com -->
+        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="./images/carousel_theatre_img.jpg" alt="Theatre Seats Image">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="./images/carousel_theatre_lights.jpg" alt="Silhouette of People Onstage">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="./images/carousel_theatre_dancing_drums.jpg" alt="People Onstage with Drums">
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center p-5">
+            <h2>Theatre Auditions & Events!</h2>
+        </div>
+
+        <div id="introduction" class="container px-5">
             <p>To Act or Not To Act! That is the question...</p>
 
             <p>Welcome to the Events and Auditions page for StageLeft Theatre Company! A well known and respected theatre arts organization in North Texas. We host a wide variety of plays, musicals, and even cabarets. You'll find information on the latest show auditions below and also events to mark your calendars for.</p>
@@ -89,6 +112,9 @@
             <div>
                 <h5>Credits/Resources</h5>
                 <p>Image Credits</p>
+                <p><a href="https://www.pexels.com/photo/theater-interior-109669/" target="_blank">Theatre Image | Photo by Donald Tong</a></p>
+                <p><a href="https://www.pexels.com/photo/silhouette-photography-of-people-on-theater-1714361/" target="_blank">Theatre Image with People Onstage | Photo by Wendy Wei</a></p>
+                <p><a href="https://www.pexels.com/photo/group-of-men-holding-drums-performing-on-stage-2888802/" target="_blank">Dancing Onstage with Drums | Photo by Kosygin Leishangthem</a></p>
                 <p><a href="https://www.pexels.com/photo/architectural-photography-of-three-pink-blue-and-yellow-buildings-347141/" target="_blank">Mamma Mia Image | Photo by Tirachard Kumtanom</a></p>
                 <p><a href="https://www.pexels.com/photo/vintage-candle-decor-with-book-and-magnifying-glass-29343080/" target="_blank">Romeo & Juliet Image | Photo by Valeriia Harbuz</a></p>
                 <p><a href="https://www.pexels.com/photo/microphone-on-stand-2101488/" target="_blank">Winter Cabaret Image | Photo by Katrien Grevendonck</a></p>
