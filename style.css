@@ -29,9 +29,82 @@ h1{
     font-style: normal;
 }
 
+h2{
+    font-family: "PT Serif", serif;
+    font-weight: 700;
+    font-style: normal;
+
+    font-size: 4rem;
+}
+
+#introduction{
+    font-size: 2rem;
+    margin-bottom: 3%;
+}
+
+#buttonContainer{
+    display: flex;
+    justify-content: center;
+}
+
+button > span{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+button.btn{
+    transition: box-shadow 0.3s;
+}
+
+button.btn:hover{
+    box-shadow: 2px 2px 4px #6c6c6c;
+}
+
+#auditionBtn{
+    display: inline-flex;
+    padding: 2%;
+}
+
+#eventBtn{
+    display: inline-flex;
+    padding: 2%;
+}
+
+h3{
+    text-align: center;
+    font-size: 3rem;
+}
+
+h4{
+    text-align: center;
+    font-size: 3rem;
+}
+
+#listsContainer{
+    padding-left: 5%;
+    padding-right: 5%;
+
+    font-size: 1.5rem;
+}
+
+.audHeaders{
+    font-size: 3rem;
+}
+
+.eventHeaders{
+    font-size: 3rem;
+}
+
 .auditionImages{
     max-width: 100%;
     height: auto;
+    border-radius: 5px;
+}
+
+.eventImages{
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
 ul{
@@ -40,4 +113,31 @@ ul{
 
 li{
     padding: 2%;
+}
+
+footer{
+    margin-top: 5%;
+    font-size: 1.1rem;
+}
+
+h5{
+    font-size: 2em;
+}
+
+h6{
+    font-size: 2em;
+}
+
+#creditHeader{
+    font-size: 1.5em;
+}
+
+a:hover{
+    color: #ffffff;
+}
+
+#warningMsg{
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 3rem;
 }

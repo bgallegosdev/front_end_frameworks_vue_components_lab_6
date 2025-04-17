@@ -25,16 +25,16 @@
 
     <main>
         <!-- Slide Images - Structure Inspired by w3schools.com -->
-        <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        <div id="demo" class="carousel slide shadow" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="./images/carousel_theatre_img.jpg" alt="Theatre Seats Image">
+                    <img class="d-block w-100" src="./images/carousel_theatre_img.jpg" alt="Theatre Seats Image" title="Theatre Seats Image">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="./images/carousel_theatre_lights.jpg" alt="Silhouette of People Onstage">
+                    <img class="d-block w-100" src="./images/carousel_theatre_lights.jpg" alt="Silhouette of People Onstage" title="Silhouette of People Onstage">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="./images/carousel_theatre_dancing_drums.jpg" alt="People Onstage with Drums">
+                    <img class="d-block w-100" src="./images/carousel_theatre_dancing_drums.jpg" alt="People Onstage with Drums" title="People Onstage with Drums">
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
             <h2>Theatre Auditions & Events!</h2>
         </div>
 
-        <div id="introduction" class="container px-5">
+        <div id="introduction" class="container px-5 py-4 card bg-light shadow-lg border-white">
             <p>To Act or Not To Act! That is the question...</p>
 
             <p>Welcome to the Events and Auditions page for StageLeft Theatre Company! A well known and respected theatre arts organization in North Texas. We host a wide variety of plays, musicals, and even cabarets. You'll find information on the latest show auditions below and also events to mark your calendars for.</p>
@@ -52,66 +52,76 @@
         <!-- Vue Application -->
         <div id="app">
             <!-- Toggle Buttons -->
-            <button @click="toggleAudition">
-                <span v-if="auditionShow">Hide Auditions List</span>
-                <span v-else>Show Auditions List</span>
-            </button>
+            <div id="buttonContainer">
+                <div id="auditionBtn" >
+                    <button @click="toggleAudition" type="button" class="btn btn-primary btn-lg">
+                        <span v-if="auditionShow">Hide Auditions List</span>
+                        <span v-else>Show Auditions List</span>
+                    </button>
+                </div>
 
-            <button @click="toggleEvent">
-                <span v-if="eventShow">Hide Events List</span>
-                <span v-else>Show Events List</span>
-            </button>
-
-            <!-- Auditions List -->
-            <div v-if="auditionShow">
-                <h2>Future Auditions!</h2>
-
-                <ul v-for="audition in auditions">
-                    <li>
-                        <img class="auditionImages" v-bind:src="audition.auditionImg" v-bind:alt="audition.auditionAlt" v-bind:title="audition.auditionAlt">
-                        <p>Show Name: {{audition.auditionName}}</p>
-                        <p>Running: {{audition.audRunning}}</p>
-                        <p>Audition Date: {{audition.audDate}} - Audition Time: {{audition.audTime}}</p>
-                        <p>Audition Requirements: {{audition.audDescription}}</p>
-                    </li>
-                </ul>
+                <div id="eventBtn">
+                    <button @click="toggleEvent" type="button" class="btn btn-primary btn-lg">
+                        <span v-if="eventShow">Hide Events List</span>
+                        <span v-else>Show Events List</span>
+                    </button>
+                </div>
             </div>
 
-            <!-- Events List -->
-            <div v-if="eventShow">
-                <h3>Future StageLeft Events!</h3>
+            <div id="listsContainer" class="container-fluid row">
+                <!-- Auditions List -->
+                <div v-if="auditionShow" class="col">
+                    <h3>Future Auditions!</h3>
 
-                <ul v-for="event in events">
-                    <li>
-                        <p>Event: {{event.eventName}}</p>
-                        <p>Date: {{event.eventDate}}</p>
-                        <p>Time: {{event.eventTime}}</p>
-                        <p>Details: {{event.eventDescription}}</p>
-                    </li>
-                </ul>
+                    <ul v-for="audition in auditions">
+                        <li class="card bg-secondary text-bg-secondary shadow border-white">
+                            <img class="auditionImages" v-bind:src="audition.auditionImg" v-bind:alt="audition.auditionAlt" v-bind:title="audition.auditionAlt">
+                            <p class="audHeaders"><b>Show Name:</b> {{audition.auditionName}}</p>
+                            <p><b>Running:</b> {{audition.audRunning}}</p>
+                            <p><b>Audition Date:</b> {{audition.audDate}} - Audition Time: {{audition.audTime}}</p>
+                            <p><b>Audition Requirements:</b> {{audition.audDescription}}</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Events List -->
+                <div v-if="eventShow" class="col">
+                    <h4>Future StageLeft Events!</h4>
+
+                    <ul v-for="event in events">
+                        <li class="card bg-secondary text-bg-secondary shadow border-white">
+                            <img class="eventImages" v-bind:src="event.eventImg" v-bind:alt="event.eventAlt" v-bind:title="event.eventAlt">
+                            <p class="eventHeaders"><b>Event:</b> {{event.eventName}}</p>
+                            <p><b>Date:</b> {{event.eventDate}}</p>
+                            <p><b>Time:</b> {{event.eventTime}}</p>
+                            <p><b>Details:</b> {{event.eventDescription}}</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Bonus Message Saying Both Are Hidden -->
-            <div v-if="eventShow === false && auditionShow === false">
-                <p>You've hidden both lists. If you want to see a list, please click on the buttons above!</p>
+            <div id="warningMsg" class="container-fluid bg-danger text-bg-danger text-center" v-if="eventShow === false && auditionShow === false">
+                <p>You've hidden both lists.</p>
+                <p>If you want to see a list, please click on the buttons above!</p>
             </div>
 
         </div>
 
     </main> 
 
-    <footer>
-        <div id="footer">
-            <div>
-                <h4>StageLeft Theatre Company</h4>
+    <footer class="container-fluid bg-dark text-bg-dark">
+        <div id="footer" class="row p-5">
+            <div class="col-sm-4">
+                <h5>StageLeft Theatre Company</h5>
 
-                <p>*This website is for educational purposes only</p>
+                <p>*This website is for educational purposes only - Creating a website using Vue components</p>
                 <p>Website By: Benjamin Gallegos</p>
             </div>
 
-            <div>
-                <h5>Credits/Resources</h5>
-                <p>Image Credits</p>
+            <div class="col-sm-8">
+                <h6>Credits/Resources</h6>
+                <p id="creditHeader">Image Credits</p>
                 <p><a href="https://www.pexels.com/photo/theater-interior-109669/" target="_blank">Theatre Image | Photo by Donald Tong</a></p>
                 <p><a href="https://www.pexels.com/photo/silhouette-photography-of-people-on-theater-1714361/" target="_blank">Theatre Image with People Onstage | Photo by Wendy Wei</a></p>
                 <p><a href="https://www.pexels.com/photo/group-of-men-holding-drums-performing-on-stage-2888802/" target="_blank">Dancing Onstage with Drums | Photo by Kosygin Leishangthem</a></p>
@@ -119,7 +129,12 @@
                 <p><a href="https://www.pexels.com/photo/vintage-candle-decor-with-book-and-magnifying-glass-29343080/" target="_blank">Romeo & Juliet Image | Photo by Valeriia Harbuz</a></p>
                 <p><a href="https://www.pexels.com/photo/microphone-on-stand-2101488/" target="_blank">Winter Cabaret Image | Photo by Katrien Grevendonck</a></p>
                 <p><a href="https://www.pexels.com/photo/close-up-shot-of-chocolates-on-yellow-background-5469109/" target="_blank">Willy Wonka Image | Photo by Polina Tankilevitch</a></p>
-                <p><a href="https://www.pexels.com/photo/green-yellow-brown-and-blue-stained-glass-942322/" target="_blank">Willy Wonka Image | Photo by Tim Mossholder</a></p>
+                <p><a href="https://www.pexels.com/photo/green-yellow-brown-and-blue-stained-glass-942322/" target="_blank">Stained Glass Image | Photo by Tim Mossholder</a></p>
+                <p><a href="https://www.pexels.com/photo/people-toasting-wine-glasses-3171837/" target="_blank">Celebration Image | Photo by cottonbro studio</a></p>
+                <p><a href="https://www.pexels.com/photo/group-of-people-having-a-meeting-6896221/" target="_blank">Group of People Meeting Image | Photo by cottonbro studio</a></p>
+                <p><a href="https://www.pexels.com/photo/cartoon-movie-showing-on-theater-screen-7991579/" target="_blank">Movie Theatre Projection Screen Image | Photo by Tima Miroshnichenko</a></p>
+                <p><a href="https://www.pexels.com/photo/selective-focus-photography-of-assorted-coloured-thread-spools-1212179/" target="_blank">Thread Image | Photo by Wendy van Zyl</a></p>
+                <p><a href="https://www.pexels.com/photo/assorted-sugar-cookies-752503/" target="_blank">Decorating Cookies Image | Photo by Jonathan Meyer</a></p>
             </div>
 
         </div>
